@@ -484,19 +484,108 @@ class BinarySearchTree<T extends Comparable<T>> {
         return node;
     }
 
-    public void display(){
-        displayRec(root);
-    }
-
-    private void displayRec(Node node){
-        if(node.getLeft() != null){
-            displayRec(node.getLeft());
-        }
-        System.out.println(node.getData());
-        if(node.getRight() != null){
-            displayRec(node.getRight());
-        }
-    }
 }
 ```
 **🔗Source:** https://www.baeldung.com/java-binary-trees
+
+### Q17: How do you perform preorder traversal in a given BNS tree?
+> Difficulty : ⭐⭐⭐
+
+```java
+void preOrder(Node node){
+    //root -> left -> right
+    System.out.println(node.getData());
+    if(node.getLeft() != null){
+        preOrder(node.getLeft());
+    }
+    if(node.getRight() != null){
+        preOrder(node.getRight());
+    }
+}
+```
+
+### Q18: How do you perform an inorder traversal in a given BNS tree?
+> Difficulty : ⭐⭐⭐
+
+```java
+void inOrder(Node node){
+    // left -> root -> right
+    if(node.getLeft() != null){
+        inOrder(node.getLeft());
+    }
+    System.out.println(node.getData());
+    if(node.getRight() != null){
+        inOrder(node.getRight());
+    }
+}
+```
+
+### Q19: How do you implement a postorder traversal algorithm in BNS Tree?
+> Difficulty : ⭐⭐⭐
+
+```java
+void postOrder(Node node){
+    // left -> right -> root
+    if(node.getLeft() != null){
+        postOrder(node.getLeft());
+    }
+    if(node.getRight() != null){
+        postOrder(node.getRight());
+    }
+    System.out.println(node.getData());
+}
+```
+
+### Q20: How do you calculate number of Node in BNS Tree?
+> Difficulty : ⭐⭐⭐
+
+```java
+public int size(){
+    return countNode(root);
+}
+
+private int countNode(Node node){
+    if(node != null){
+        return (1 + countNode(node.getLeft()) + countNode(node.getRight()));
+    }
+    else{
+        return 0;
+    }
+}
+```
+
+### Q21: How do you search item from BNS Tree?
+> Difficulty : ⭐⭐⭐
+
+```java
+public Node<T> search(T data){
+    return searchRec(root,data);
+}
+
+private Node<T> searchRec(Node<T> node, T data){
+    if(node == null){
+        return null;
+    }
+    else if(data.compareTo(node.getData()) == 0){
+        return node;
+    }
+    else if(data.compareTo(node.getData()) < 0){
+        return searchRec(node.getLeft(),data);
+    }
+    else{
+        return searchRec(node.getRight(),data);
+    }
+}
+```
+
+### Q22: How to swap 2 numbers without using temp or third variable?
+> Difficulty : ⭐⭐⭐
+
+```javascript
+function swap(arr, i, j){
+    arr[i] = arr[i] + arr[j];
+    arr[j] = arr[i] - arr[j];
+    arr[i] = arr[i] - arr[j];
+}
+```
+**🔗Source:** https://javarevisited.blogspot.com/2013/02/swap-two-numbers-without-third-temp-variable-java-program-example-tutorial.html
