@@ -589,3 +589,132 @@ function swap(arr, i, j){
 }
 ```
 **🔗Source:** https://javarevisited.blogspot.com/2013/02/swap-two-numbers-without-third-temp-variable-java-program-example-tutorial.html
+
+### Q23: Implement a bubble sort algorithm?
+> Difficulty : ⭐⭐
+
+```javascript
+function bubbleSort(arr){
+  for(let i = 0; i < arr.length - 1; i++){
+    for(let j = i + 1; j < arr.length; j++){
+      if(arr[i] > arr[j]){
+        arr[i] = arr[i] + arr[j];
+        arr[j] = arr[i] - arr[j];
+        arr[i] = arr[i] - arr[j];
+      }
+    }
+  }
+  return arr;
+}
+```
+
+### Q24: How do you implement an insertion sort algorithm?
+> Difficulty : ⭐⭐⭐
+
+```javascript
+function insertSort(arr){
+  for(let i = 1; i < arr.length; i++){
+    let j = i;
+    while(j >= 1){
+      if(arr[j] < arr[j - 1]){
+        let temp = arr[j - 1];
+        arr[j - 1] = arr[j];
+        arr[j] = temp;
+      }
+      j--;
+    }
+  }
+  return arr;
+}
+```
+
+### Q25: How is a merge sort algorithm implemented?
+> Difficulty : ⭐⭐⭐⭐⭐
+
+```javascript
+function mergeSort(arr, start, end){
+  if(start < end){
+    let middle = Math.floor((start + end) / 2);
+    mergeSort(arr,start,middle);
+    mergeSort(arr,middle + 1, end);
+    merge(arr,start,middle,end);
+  }
+}
+
+function merge(arr,start, middle, end){
+  let length = end - start + 1;
+  let tempArr = new Array(length);
+  let i = start; // Travel from start -> mid
+  let j = middle + 1; // Travel from mid + 1 -> end
+  let k = 0; // index of tempArr
+
+  // Travel in both sign and add smaller elements to tempArr
+  while(i <= middle && j <= end){
+    if(arr[i] <= arr[j]){
+      // Add smaller element to tempArr
+      tempArr[k] = arr[i];
+      k++; i++;
+    }
+    else{
+      tempArr[k] = arr[j];
+      k++; j++;
+    }
+  }
+
+  // Check for sure all elements have loop throught
+  while(i <= middle){
+    tempArr[k] = arr[i];
+    k++; i++;
+  }
+  while(j <= end){
+    tempArr[k] = arr[j];
+    k++; j++;
+  }
+
+  // Merge tempArr to original one
+  i = start;
+  for(k = 0; k < length; k++){
+    arr[i] = tempArr[k];
+    i++;
+  }
+}
+```
+**🔗Source:** https://www.interviewbit.com/tutorial/merge-sort-algorithm/
+
+### Q26: How do you implement a counting sort algorithm?
+> Difficulty : ⭐⭐⭐
+```javascript
+// NOTE: This algorithm work best on really small number array
+function countingSort(arr){
+  let count = new Array(100);
+
+  for(let i = 0; i < count.length; i++){
+    count[i] = 0;
+  }
+
+  for(let num of arr){
+    count[num]++;
+  }
+
+  for(let i = 1; i < count.length; i++){
+    count[i] += count[i - 1];
+  }
+
+
+  for(let i = count.length - 1; i > 0; i--){
+    count[i] = count[i - 1];
+  }
+  count[0] = 0;
+  
+  let sortedArr = new Array(arr.length);
+  for(let num of arr){
+    let index = count[num];
+    sortedArr[index] = num;
+    count[num]++;
+  }
+
+  return sortedArr;
+}
+```
+**🔗Source:** https://www.youtube.com/watch?v=OKd534EWcdk
+
