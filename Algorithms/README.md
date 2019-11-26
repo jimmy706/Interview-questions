@@ -683,6 +683,7 @@ function merge(arr,start, middle, end){
 
 ### Q26: How do you implement a counting sort algorithm?
 > Difficulty : ⭐⭐⭐
+
 ```javascript
 // NOTE: This algorithm work best on really small number array
 function countingSort(arr){
@@ -700,21 +701,88 @@ function countingSort(arr){
     count[i] += count[i - 1];
   }
 
-
-  for(let i = count.length - 1; i > 0; i--){
-    count[i] = count[i - 1];
-  }
-  count[0] = 0;
-  
   let sortedArr = new Array(arr.length);
-  for(let num of arr){
-    let index = count[num];
-    sortedArr[index] = num;
-    count[num]++;
+  for(let i = arr.length - 1; i >= 0; i--){
+    let index = count[arr[i]] - 1;
+    sortedArr[index] = arr[i];
+    count[arr[i]]--;
   }
-
-  return sortedArr;
+  arr = [...sortedArr];
 }
 ```
 **🔗Source:** https://www.youtube.com/watch?v=OKd534EWcdk
 
+### Q27: How is a radix sort algorithm implemented?
+> Difficulty : ⭐⭐⭐⭐
+
+```java
+void countingSort(Integer arr[], int place){
+        int[] count = new int[100];
+        Integer[] sortedArr = new Integer[arr.length];
+        Arrays.fill(count,0);
+        int i;
+
+        for(i = 0; i < arr.length; i++){
+            count[ (arr[i]/place)%10 ]++;
+        }
+
+        for( i = 1; i < 100; i++){
+            count[i] += count[i - 1];
+        }
+
+
+        for(i = arr.length - 1; i >= 0; i--){
+           sortedArr[count[(arr[i]/place)%10 ] - 1] = arr[i];
+           count[(arr[i]/place)%10 ]--;
+        }
+
+        for(i = 0; i < arr.length; i++){
+            arr[i] = sortedArr[i];
+        }
+
+    }
+
+Integer[] radixSort(Integer arr[]){
+    int max = Collections.max(Arrays.asList(arr));
+    for(int place = 1; max / place > 0; place *= 10)
+        countingSort(arr,place);
+
+    return arr;
+}
+```
+**🔗Source:** https://www.youtube.com/watch?v=XiuSW_mEn7g&t=22s
+
+### Q28: How do you implement a bucket sort algorithm?
+> Difficulty : ⭐⭐⭐
+
+```java
+Integer[] bucketSort(Integer[] arr){
+        int max = Collections.max(Arrays.asList(arr));
+        List<List<Integer>> bucket = new ArrayList<>(10);
+        int i;
+        for(i = 0; i < 10; i++){
+            bucket.add(new ArrayList<>());
+        }
+        // First: find the divider = ceil((max + 1) / 10)
+        int divider = (int)Math.ceil((double)(max + 1) / 10);
+
+        // Next, Loop through arr and add number to bucket at index j = floor(arr[i] / divider)
+        for(i = 0; i < arr.length; i++){
+            int j = arr[i] / divider;
+            bucket.get(j).add(arr[i]);
+        }
+
+        // Loop through every bucket and sort its bucket with insertSort
+        for(List<Integer> b : bucket){
+            insertSort(b);
+        }
+
+        // Combine all buckets to sortedArr
+        List<Integer> sortedArr = new ArrayList<>();
+        for(List<Integer> b : bucket){
+            sortedArr.addAll(b);
+        }
+
+        return sortedArr.toArray(arr);
+    }
+```
