@@ -1,5 +1,6 @@
 # My collections of interview questions
 
-## 1. [Algorithm interview questions](https://github.com/jimmy706/Interview-questions/tree/master/Algorithms)
-## 2. [React interview questions](https://github.com/jimmy706/Interview-questions/tree/master/React)
-## 3. [JavaScript interview questions](https://github.com/jimmy706/Interview-questions/tree/master/Javascript)
+## 1. [Algorithm interview questions](./Algorithms/README.md)
+## 2. [React interview questions](./React/README.md)
+## 3. [JavaScript interview questions](./Javascript/README.md)
+## 4. [Java interview questions](./Java/README.md)
