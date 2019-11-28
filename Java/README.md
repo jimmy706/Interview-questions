@@ -330,7 +330,7 @@ static block is invoked
 Hello main
 ```
 
-### Q28: Can we execute a program without main() method?
+### Q28: Can we execute a program without `main()` method?
 > Difficulty : ⭐⭐⭐
 
 Yes, one of the ways to execute the program without the main method is using static block.
@@ -339,3 +339,165 @@ Yes, one of the ways to execute the program without the main method is using sta
 > Difficulty : ⭐⭐⭐
 
 The `this` keyword is a reference variable that refers to the current object. There are the various uses of `this` keyword in Java. It can be used to refer to current class properties such as instance methods, variable, constructors, etc. It can also be passed as an argument into the methods or constructors. It can also be returned from the method as the current class instance.
+
+### Q30: What is the output of the following Java program?
+> Difficulty : ⭐⭐⭐⭐⭐
+
+```java
+class OverloadingCalculation3{    
+  void sum(int a,long b){System.out.println("a method invoked");}    
+  void sum(long a,int b){System.out.println("b method invoked");}    
+    
+  public static void main(String args[]){    
+    OverloadingCalculation3 obj=new OverloadingCalculation3();    
+    obj.sum(20,20);    
+  }    
+} 
+```
+<details>
+  <summary><b>Answer</b></summary>
+  <p>
+    There are two methods defined with the same name, i.e., sum. The first method accepts the integer and long type whereas the second method accepts long and the integer type. The parameter passed that are a = 20, b = 20. We can not tell that which method will be called as there is no clear differentiation mentioned between integer literal and long literal. This is the case of ambiguity. Therefore, the compiler will throw an error.
+  </p>
+</details>
+
+### Q31: Can we override the private methods?
+> Difficulty : ⭐⭐⭐
+
+No, we cannot override the private methods because the scope of private methods is limited to the class and we cannot access them outside of the class.
+
+### Q32: What is the output of the following Java program?
+> Difficulty : ⭐⭐⭐⭐
+
+```java
+class Base  
+{  
+    void method(int a)  
+    {  
+        System.out.println("Base class method called with integer a = "+a);  
+    }  
+       
+    void method(double d)  
+    {  
+        System.out.println("Base class method called with double d ="+d);  
+    }  
+}  
+   
+class Derived extends Base  
+{  
+    @Override  
+    void method(double d)  
+    {  
+        System.out.println("Derived class method called with double d ="+d);  
+    }  
+}  
+   
+public class Main  
+{      
+    public static void main(String[] args)  
+    {  
+        new Derived().method(10);  
+    }  
+} 
+```
+
+<details>
+  <summary><b>Answer</b></summary>
+  <code> 
+    Base class method called with integer a = 10
+  </code>
+</details>
+
+### Q33: What is the output of the following Java program?
+> Difficulty : ⭐⭐⭐⭐
+
+```java
+class Base {  
+    public void baseMethod(){  
+        System.out.println("BaseMethod called ...");  
+    }  
+}  
+class Derived extends Base {  
+    public void baseMethod(){  
+        System.out.println("Derived method called ...");  
+    }  
+}  
+public class Test {  
+    public static void main (String args[]){  
+        Base b = new Derived();  
+        b.baseMethod();  
+    }  
+}
+```
+<details>
+  <summary><b>Answer</b></summary>
+  <code> 
+    Derived method called ...
+  </code>
+</details>
+
+### Q34: Can we declare an interface as final?
+> Difficulty : ⭐⭐⭐
+
+No, we cannot declare an interface as final because the interface must be implemented by some class to provide its definition. Therefore, there is no sense to make an interface final.
+
+### Q35: What is a Thread?
+> Difficulty : ⭐⭐
+
+The flow of a execution is called Thread. Every java program has at least one thread called main thread, the Main thread is created by JVM.
+
+### Q36: How do you make a thread in Java?
+> Difficulty : ⭐⭐
+
+There are two ways available in order to make a thread:
+1. **Extend `Thread`class**:
+```java
+public class Addition extends Thread {
+  public void run () {}
+}
+```
+
+2. **Implement `Runable` interface**:
+```java
+public class Addition implements Runnable {
+  public void run () {}
+}
+```
+
+### Q37: Explain about join () method?
+> Difficulty : ⭐⭐⭐
+
+`join()` method is used to join one thread with the end of the currently running thread.
+
+```java
+public static void main (String[] args){
+  Thread t = new Thread ();
+  t.start ();
+  t.join ();
+}
+```
+
+From the above code, the **main thread** started the execution. When it reaches the code `t.start()` then **Thread t** starts the own stack for the execution. JVM switches between the **main thread** and **Thread t**.
+
+Once it reaches the code t.join() then **Thread t** alone is executed and completes its task, then only **main thread** started the execution.
+
+### Q38: Difference between start() and run() method of thread class.
+> Difficulty : ⭐⭐⭐
+
+`start()` method creates new thread and the code inside the `run()` method is executed in the new thread. If we directly called the `run()` method then a new thread is not created and the currently executing thread will continue to execute the `run()` method.
+
+### Q39: Explain thread life cycle in Java.
+> Difficulty : ⭐⭐⭐⭐
+
+![Thread life cycle](./img/thread-life-cycle.jpg "Thread life cycle")
+**Thread** has the following states:
+
+- **New**: Thread instance has been created but `start()` method is not yet invoked. Now the thread is not considered alive.
+
+- **Runable**: Thread is in runnable state after invocation of the `start()` method, but before the `run()` method is invoked. But a thread can also return to the runnable state from waiting/sleeping. In this state the thread is considered alive. 
+
+- **Running**: The thread is in running state after it calls the `run()` method. Now the thread begins the execution.
+
+- **Blocked**: The thread is alive but it is not eligible to run. It is not in runnable state but also, it will return to runnable state after some time. For example: `wait, sleep, block`.
+
+- **Terminated**: Once the run method is completed then it is terminated. Now the thread is not alive.
