@@ -304,13 +304,13 @@ It increases the modularity and the key unit is Aspect.
 - **Advice**: What action be taken and when should be applied
 - **Join Point**: When to applied code during program execution. For example:  field access, method execution, exception handling etc... (Spring only support method execution Join Point only)
 - **Point Cut**: a predicate that matches join points.
-- **Weaving**: Connecting Aspect to target object and create an advised object. This can be done at compile time (using the AspectJ compiler, for example), load time, or at runtime. Spring AOP, like other pure Java AOP frameworks, performs weaving at runtime.
+- **Weaving**: Connecting Aspect to target object and create an advised object. This can be done at compile time (using the AspectJ compiler, for example), load time, or at runtime. Spring AOP, like other pure Java AOP frameworks, performs weaving at *runtime*.
 
 Advice, Join Point, Point Cut example:
 ![AOP](./img/aop.png "AOP")
 
 ### Q27: What are the types of advice in AOP?
-> Difficulty : ⭐⭐⭐⭐
+> Difficulty: ⭐⭐⭐⭐
 
 There are 5 types of advices in spring AOP.
 
@@ -320,3 +320,47 @@ There are 5 types of advices in spring AOP.
 4. **Throws Advice**: Run after method throwing exception
 5. **Around Advice**: Run BEFORE and AFTER method
 
+### Q28: Why Spring Boot?
+> Difficulty: ⭐⭐
+
+Spring-based applications have a lot of configuration (boiler-plate code). In Spring MVC, a lot of configuration is required (like component scan, dispatcher servlet, view resolver, etc). Whereas, in Spring Boot the boiler-plate code is not required.
+
+### Q29: Spring vs Spring MVC vs Spring Boot?
+> Difficulty: ⭐⭐⭐
+
+- **Spring**: the most important feature of Spring is `Dependency Injection` and `Inversion of Control`.
+
+- **Spring MVC**: provides a decoupled approach in developing web applications. Concepts like `DispatcherServlet`, `ModelAndView`, `ViewResolver` makes web application development easy.
+
+- **Spring Boot**: makes the configuration very easy and automatic using a feature called `Auto Configuration`, in which the DispatcherServlet is done by Spring internally.
+
+### Q30: What is the role of `@SpringBootApplication`?
+> Difficulty: ⭐⭐⭐
+
+This annotation is used to launch up the entire application. Internally, @SpringBootApplication does the following:
+
+- `@SpringBootConfiguration`: same as @Configuration in a Spring Application.
+
+- `@EnableAutoConfiguration`: auto-configures the classes available in the classpath.
+
+- `@ComponentScan`: all the classes available under a package will be scanned when this annotation is applied.
+
+### Q31: What is Spring JDBC?
+> Difficulty: ⭐⭐⭐
+
+Spring JDBC uses methods like update (query), execute (query) and query (SQL, resultSetExtractor) to interact with the database.
+
+### Q32: What is JPA?
+> Difficulty: ⭐⭐⭐
+
+**Java Persistence API (JPA)** defines the mapping from Java Object to a Database Table. The procedure to map a Java object to a row in a database table is defined in JPA. JPA provides a lot of useful annotations, using which the relationship between classes and tables are defined.
+
+### Q33: What is Hibernate?
+> Difficulty: ⭐⭐⭐
+
+Once the mapping is done, Hibernate (a JPA Implementation) will help us create query under the hood and interact with the database.
+
+### Q34:  What is the importance of POM.XML file?
+> Difficulty: ⭐⭐
+
+**Project Object Model (POM)** is an XML formatted file in which all the configuration for a maven project is defined
