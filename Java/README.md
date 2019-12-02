@@ -501,3 +501,113 @@ Once it reaches the code t.join() then **Thread t** alone is executed and comple
 - **Blocked**: The thread is alive but it is not eligible to run. It is not in runnable state but also, it will return to runnable state after some time. For example: `wait, sleep, block`.
 
 - **Terminated**: Once the run method is completed then it is terminated. Now the thread is not alive.
+
+### Q40: What are the main differences between array and collection?
+> Difficulty : ⭐⭐⭐
+
+- Arrays are always of fixed size, i.e., a user can not increase or decrease the length of the array according to their requirement or at runtime, but In Collection, size can be changed dynamically as per need.
+
+- Arrays can only store homogeneous or similar type objects, but in Collection, heterogeneous objects can be stored.
+
+- Collections include *readymade* methods like **sorting, searching...**.
+
+### Q41: What is the difference between `ArrayList` and `LinkedList`?
+> Difficulty : ⭐⭐⭐
+
+| Array List                                          | LinkedList                                                                               |
+|-----------------------------------------------------|------------------------------------------------------------------------------------------|
+| Uses a dynamic array                                | Uses a doubly linked list                                                                |
+| Is better to store and fetch data                   | Is better to manipulate data                                                             |
+| Takes less memory overhead as it stores only object | Takes more memory overhead, as it stores the object as well as the address of that objec |
+
+### Q42: What is the difference between Collection and Collections?
+
+- The Collection is an interface whereas Collections is a class.
+
+- The Collection interface provides the standard functionality of data structure to `List, Set, and Queue`. However, Collections class is to sort and synchronize the collection elements.
+
+- The Collection interface provides the methods that can be used for data structure whereas Collections class provides the static methods which can be used for various operation on a collection like `sort, addAll, max, min...`.
+
+### Q43: What is Upcasting in Java?
+> Difficulty : ⭐⭐⭐
+
+**Upcasting** is casting to a supertype. In general, you can upcast whenever there is an is-a relationship between two classes.. For example:
+```java
+class Animal 
+{ 
+    public void callme()
+    {
+        System.out.println("In callme of Animal");
+    }
+}
+
+class Dog extends Animal 
+{ 
+    public void callme()
+    {
+        System.out.println("In callme of Dog");
+    }
+
+    public void bark()
+    {
+        System.out.println("The dog is barking...");
+    }
+}
+
+public class UseAnimlas 
+{
+    public static void main (String [] args) 
+    {
+        Dog dog = new Dog();
+        // Upcasting
+        Animal animal = (Animal) dog;
+        animal.callme(); // In callme of Animal
+    }
+}
+```
+
+### Q43: What is Downcasting in Java?
+> Difficulty : ⭐⭐⭐⭐
+
+**Downcasting** is casting to a subtype. for downcasting, we need to check the types or else we may get `ClassCastException`. For example: 
+
+```java
+class Animal 
+{ 
+    public void callme()
+    {
+        System.out.println("In callme of Animal");
+    }
+}
+
+class Dog extends Animal 
+{ 
+    public void callme()
+    {
+        System.out.println("In callme of Dog");
+    }
+
+    public void bark()
+    {
+        System.out.println("The dog is barking...");
+    }
+}
+
+public class UseAnimlas 
+{
+    public static void main (String [] args) 
+    {
+        Animal animal = new Dog();
+        // Downcasting
+        Dog dog = (Dog) animal;
+        animal.callme(); // In callme of Dog
+    }
+}
+```
+In this case, the cast is possible because at runtime `animal` is actually a `Dog` even though the static type of `animal` is `Animal`. However, if you were to do this:
+
+```java
+Animal animal = new Animal();
+Dog dog = (Dog) animal; // ClassCastException
+```
+You'd get a `ClassCastException`. The reason why is because `animal`'s runtime type is `Animal`, and so when you tell the runtime to perform the cast it sees that `animal` isn't really a `Dog` and so throws a `ClassCastException`.
