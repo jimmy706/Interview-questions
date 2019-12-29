@@ -787,3 +787,22 @@ Integer[] bucketSort(Integer[] arr){
     }
 ```
 **🔗Source:** https://www.youtube.com/watch?v=geVyIsFpxUs
+
+Q29: How to calculate square root without using library?
+> Difficulty : ⭐⭐⭐⭐⭐
+
+```java
+ static double sqrt(double number) {
+        double t;
+
+        double squareRoot = number / 2;
+
+        do {
+            t = squareRoot;
+            squareRoot = (t + (number / t)) / 2;
+        } while ((t - squareRoot) != 0);
+
+        return squareRoot;
+    }
+```
+**🔗Source:** https://www.programcreek.com/2012/02/java-calculate-square-root-without-using-library-method/
