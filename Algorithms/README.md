@@ -792,17 +792,28 @@ Q29: How to calculate square root without using library?
 > Difficulty : ⭐⭐⭐⭐⭐
 
 ```java
- static double sqrt(double number) {
-        double t;
-
-        double squareRoot = number / 2;
-
-        do {
-            t = squareRoot;
-            squareRoot = (t + (number / t)) / 2;
-        } while ((t - squareRoot) != 0);
-
-        return squareRoot;
+double findSquare(double n, double i, double j){
+      double mid = (i + j) / 2;
+      double mul = mid * mid;
+      if(mul == n || Math.abs(mul - n) < 0.00001){
+          return mid;
+      }
+      else if(mul < n) return findSquare(n,mid,j);
+      else return findSquare(n,i,mid);
+  }
+Double square(double n){
+        if(n <= 0) return null;
+        double i = 1;
+        while(true){
+            double mul = i * i;
+            if(mul == n){
+                return i;
+            }
+            else if(mul > n){
+                return findSquare(n,i - 1,i);
+            }
+            i++;
+        }
     }
 ```
 **🔗Source:** https://www.programcreek.com/2012/02/java-calculate-square-root-without-using-library-method/
