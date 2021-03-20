@@ -788,7 +788,7 @@ Integer[] bucketSort(Integer[] arr){
 ```
 **🔗Source:** https://www.youtube.com/watch?v=geVyIsFpxUs
 
-Q29: How to calculate square root without using library?
+### Q29: How to calculate square root without using library?
 > Difficulty : ⭐⭐⭐⭐⭐
 
 ```java

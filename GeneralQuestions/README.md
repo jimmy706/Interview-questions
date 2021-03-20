@@ -67,3 +67,25 @@ MVC Pattern stands for Model-View-Controller Pattern. This pattern is used to se
          An API(Application programming interfaces) is a set of programming code that enables data transmission between one software product and another. It also contains the terms of this data exchange.
     </p>
 </details>
+
+- What is OOP?
+
+> Difficulty : ⭐⭐
+<details>
+    <summary>
+        Answer
+    </summary>
+    <p>
+        Object Oriented programming (OOP) is a programming paradigm that relies on the concept of classes and objects. It is used to structure a software program into simple, reusable pieces of code blueprints (usually called classes), which are used to create individual instances of objects. There are many object-oriented programming languages including JavaScript, C++, Java, and Python.
+    </p>
+</details>
+
+- List OOP principles?
+> Difficulty : ⭐⭐
+
+OOP based on 4 main principles:
+- Encapsulation
+- Abstraction
+- Inheritance
+- Polymorphism
+
