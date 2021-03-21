@@ -257,3 +257,48 @@ console.log(output);
     <p>1</p>
   </code>
 </details>
+
+### Q20: What is hoisting in JavaScript?
+> Difficulty : ⭐⭐⭐
+
+<details>
+  <summary>Answer</summary>
+  <p>
+  Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. Inevitably, this means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
+  </p>
+</details>
+
+**Example:**
+```javascript
+function hoist() {
+  a = 20;
+  var b = 100;
+}
+
+hoist();
+
+console.log(a);
+/*
+Accessible as a global variable outside hoist() function
+Output: 20
+*/
+
+console.log(b);
+/*
+Since it was declared, it is confined to the hoist() function scope.
+We can't print it out outside the confines of the hoist() function.
+Output: ReferenceError: b is not defined
+*/
+```
+
+### Q21: What's the difference between using “let” and “var”?
+> Difficulty : ⭐⭐
+
+
+
+<details>
+  <summary>Answer</summary>
+ <p>
+    Refference this stackoverflow' s <a href="https://stackoverflow.com/questions/762011/whats-the-difference-between-using-let-and-var">answer</a>
+  </p>
+</details>
