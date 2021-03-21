@@ -515,7 +515,7 @@ Once it reaches the code t.join() then **Thread t** alone is executed and comple
 > Difficulty : ⭐⭐⭐
 
 | Array List                                          | LinkedList                                                                               |
-|-----------------------------------------------------|------------------------------------------------------------------------------------------|
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | Uses a dynamic array                                | Uses a doubly linked list                                                                |
 | Is better to store and fetch data                   | Is better to manipulate data                                                             |
 | Takes less memory overhead as it stores only object | Takes more memory overhead, as it stores the object as well as the address of that objec |
@@ -611,3 +611,41 @@ Animal animal = new Animal();
 Dog dog = (Dog) animal; // ClassCastException
 ```
 You'd get a `ClassCastException`. The reason why is because `animal`'s runtime type is `Animal`, and so when you tell the runtime to perform the cast it sees that `animal` isn't really a `Dog` and so throws a `ClassCastException`.
+
+### Q44: What Is the Observer Pattern?
+> Difficulty : ⭐⭐⭐
+
+An observer pattern helps create multiple dependencies. So, when one object changes the state, every dependent is informed. 
+
+### Q44: Give example about Observer Pattern
+> Difficulty : ⭐⭐⭐
+
+For example we have notification feature, we want our App update when we received new notification
+
+```java
+interface NotifySubscriber {
+  public void update(boolean follow);
+}
+
+class TagObserver {
+  ArrayList<NotifySubscriber> observerList = new ArrayList();
+  ArrayList<String> notifications = new ArrayList();
+
+  public void addObserver(NotifySubscriber subscriber) {
+    this.observerList.add(subscriber);
+  }
+
+  public void removeObserver(NotifySubscriber subscriber) {
+    this.observerList.remove(subscriber);
+  }
+
+  public void newNotifyCation(String noti) {
+    notifications.add(noti);
+    for(NotifySubscriber subscriber : this.observerList) {
+      subscriber.update(noti);
+    }
+  }
+
+}
+```
+
