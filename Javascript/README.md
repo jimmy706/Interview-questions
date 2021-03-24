@@ -302,3 +302,23 @@ Output: ReferenceError: b is not defined
     Refference this stackoverflow' s <a href="https://stackoverflow.com/questions/762011/whats-the-difference-between-using-let-and-var">answer</a>
   </p>
 </details>
+
+### Q22: The differences between require and import in Node.js?
+> Difficulty : ⭐⭐⭐
+
+1. When using `import ... from ...`, the module path must be a string literal. When using `require`, the module path can be dynamic.
+```javascript
+// This work
+const name = "module2";
+const obj = require(`./${name}`);
+
+
+// result in a syntax error.
+const name = "module2";
+const obj = require(`./${name}`);
+```
+2. `require` run synchronically when `import` run asynchronically
+
+3. You can leave out a `.js` extension when importing a local module with `require`, but cannot do the same when using `import`.
+
+>Furthermore, **webpack** has an option that changes this behavior. Specifically, if `resolve.enforceExtension` is true, then extensions are required. This option is set to false by default, which explains why in many frameworks (like **Next.js**, which uses webpack behind the scenes) you can use `import` without specifying file extensions.
